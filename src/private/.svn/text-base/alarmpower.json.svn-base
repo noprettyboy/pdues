@@ -1,0 +1,6 @@
+{
+"lowcritical":~unitactlowcritical_get~
+,"lowwarning":~unitactlowwarning_get~
+,"upwarning":~unitactuppwarning_get~
+,"upcritical":~unitactupcritical_get~
+}

@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<title>::ENLOGIC::</title>
+<link href="css/prod.css" rel="stylesheet">
+<!--[if lt IE 9]>
+<script src="js/ie8.js"></script>
+<![endif]-->
+</head>
+
+<body>
+<div id="wrapper" style="display:none;">
+
+  <div id="dashboardhead" class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+
+    <div id="logoheaddiv" style="background-color:#fff">
+      <!-- <img id="logoimg" src="public/logo.png" /> -->    
+      <div class="menuright">
+        <a href="http://www.enlogic.com" target="_blank">{{=it.help.txt}}</a>
+        <a id="logout" href="#">{{=it.logout}}</a>
+      </div>
+      <div id="logospan">
+      </div>
+    </div>
+
+    <div>
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <!-- <a class="navbar-brand" href="#">Enlogic</a> -->
+      </div>
+      <div class="collapse navbar-collapse">
+        <!-- <ul class="nav navbar-nav">
+          <li class="current">
+            <a id="menuDashboard">Dashboard</a>
+          </li>
+        </ul> -->
+        <ul class="nav navbar-nav navbar-right" id="settings">
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown"> 
+              <span>{{=it.deviceadmin.txt}}</span> <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li name="pduinfo" title="{{=it.deviceadmin.pduinfo.dlg}}">
+                <a>{{=it.deviceadmin.pduinfo.txt}}</a>
+              </li>
+              <li name="sensorinfo" title="{{=it.deviceadmin.sensorinfo.dlg}}">
+                <a>{{=it.deviceadmin.sensorinfo.txt}}</a>
+              </li>
+              <li class="divider"></li>
+              <li name="http" title="{{=it.deviceadmin.networkser.http.dlg}}">
+                <a>{{=it.deviceadmin.networkser.http.txt}}</a>
+              </li>
+              <li name="telnet" title="{{=it.deviceadmin.networkser.telnet.dlg}}">
+                <a>{{=it.deviceadmin.networkser.telnet.txt}}</a>
+              </li>
+              <li name="snmp" title="{{=it.deviceadmin.networkser.snmp.dlg}}">
+                <a>{{=it.deviceadmin.networkser.snmp.txt}}</a>
+              </li>
+              <li name="network" title="{{=it.deviceadmin.networkcon.dlg}}">
+                <a>{{=it.deviceadmin.networkcon.txt}}</a>
+              </li>
+              
+              <li class="divider"></li>
+
+              <!-- <li name="devinfo" title="{{=it.systemadmin.deviceinfo.dlg}}">
+                <a>{{=it.systemadmin.deviceinfo.txt}}</a>
+              </li>
+              <li name="resetdev" title="{{=it.systemadmin.nwcardreset.dlg}}">
+                <a>{{=it.systemadmin.nwcardreset.txt}}</a>
+              </li> -->
+
+              <li name="eventrl" title="{{=it.deviceadmin.eventrules.dlg}}">
+                <a>{{=it.deviceadmin.eventrules.txt}}</a>
+              </li>
+              <li name="datalog" title="{{=it.deviceadmin.datalog.txt}}">
+                <a>{{=it.deviceadmin.datalog.txt}}</a>
+              </li>
+              <li name="datetime" title="{{=it.deviceadmin.datetime.dlg}}">
+                <a>{{=it.deviceadmin.datetime.txt}}</a>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown"> 
+              <span>{{=it.systemadmin.txt}}</span> <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- <li class="dropdown-header">{{=it.useradmin.txt}}</li> -->
+              <li name="changepw" title="{{=it.useradmin.changepw.dlg}}">
+                <a>{{=it.useradmin.changepw.txt}}</a>
+              </li>
+              <li name="users" title="{{=it.useradmin.users.dlg}}">
+                <a>{{=it.useradmin.users.txt}}</a>
+              </li>
+
+              <li class="divider"></li>
+
+              <!-- <li class="dropdown-header">{{=it.deviceadmin.security.txt}}</li> -->
+              <!-- <li name="datalog" title="{{=it.deviceadmin.datalog.txt}}">
+                <a>{{=it.deviceadmin.datalog.txt}}</a>
+              </li>
+              <li name="datetime" title="{{=it.deviceadmin.datetime.dlg}}">
+                <a>{{=it.deviceadmin.datetime.txt}}</a>
+              </li> -->
+
+              <li name="diagnostic" title="{{=it.systemadmin.diagnostic.txt}}">
+                <a>{{=it.systemadmin.diagnostic.txt}}</a>
+              </li>
+              <li name="blkconf" title="{{=it.systemadmin.pduconfig.dlg}}">
+                <a>{{=it.systemadmin.pduconfig.txt}}</a>
+              </li>
+
+              <li class="divider"></li>
+              <!-- <li class="dropdown-header">{{=it.systemadmin.firmwaremt.txt}}</li> -->
+
+              <!-- <li name="blkconf" title="{{=it.systemadmin.pduconfig.dlg}}">
+                <a>{{=it.systemadmin.pduconfig.txt}}</a>
+              </li> -->
+
+              <!-- <li name="updtfw" title="{{=it.systemadmin.firmwaremt.udfirmware.txt}}">
+                <a>{{=it.systemadmin.firmwaremt.udfirmware.txt}}</a>
+              </li> -->
+
+              <li name="devinfo" title="{{=it.systemadmin.deviceinfo.dlg}}">
+                <a>{{=it.systemadmin.deviceinfo.txt}}</a>
+              </li>
+              <li name="resetdev" title="{{=it.systemadmin.nwcardreset.dlg}}">
+                <a>{{=it.systemadmin.nwcardreset.txt}}</a>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown">{{=it.language.txt}} <b class="caret"></b></a>
+            <ul id="sellocal" class="dropdown-menu">
+              <li name="en"><a>English</a></li>
+              <li name="cn"><a>中文简体</a></li>
+              <!-- <li name="de"><a>Deutsch</a></li> -->
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="navbar navbar-fixed-bottom navbar-inverse">
+    <div class="menuleft">
+      <a>
+        <span id="user">guest</span>
+      </a>
+    </div>
+    <div class="menuright">
+      <a id="currenttime">Nov 26, 2013</a>
+    </div>
+  </div>
+
+  <div id="dashboard" class="container" style="margin-top:50px;">
+    <!-- <div class="jumbotron"> -->
+      <!-- IRMC : <span id="irmc_name"></span> -->
+      <!-- <input id="irmc_name" disabled="disabled" value="" />
+      <button id="btnNameEdit">Edit</button> -->
+    <!-- </div> -->
+    <!-- <div class="row">
+      <div class="col-lg-12">
+        <div id="energychart" class="chart"></div>
+        <h6 id="chart_title">Active Power (kWh) </h6>
+      </div>
+    </div>
+    <hr> -->
+    <div class="row">
+      <div class="col-lg-12">
+        <!-- <h4 id="alarmstitle">Alarms</h4> -->
+        <h4>PDU</h4>
+        <table id="alarmsgrid" class="table table-striped"></table>
+      </div>
+      <div class="col-lg-12" id="currentdiv1" hide>
+        <h4 id="currentrms">Current, RMS (A)</h4>
+        <table id="currentgrid" class="table table-striped"></table>
+      </div>
+      <div class="col-lg-12" id="currentdiv2" hide>
+        <h4 id="currentrms2">Current2, RMS (A)</h4>
+        <table id="currentgrid2" class="table table-striped"></table>
+      </div>
+      <div class="col-lg-12">
+        <h4>
+          <span id="voltagerms">Voltage, RMS (V)</span>
+          <label style="width:180px;"></label>
+          <span id="voltenergy"></span>
+        </h4>
+        <table id="voltagegrid" class="table table-striped"></table>
+      </div>
+      <div class="col-lg-12">
+        <h4 id="pdupowerenergy">Power Energy</h4>
+        <table id="energygrid" class="table table-striped"></table>
+      </div>
+      <!-- <div class="col-lg-2">
+        <h4 id="voltagerms">Circuit Breakers</h4>
+        <table id="circuitgrid" class="table table-striped"></table>
+      </div> -->
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <h4 id="externalsensor">External Sensors</h4>
+        <table id="sensorgrid" class="table table-striped"></table>
+      </div>
+    </div>
+    <br>
+    <hr>
+    <!-- <footer>
+      <p>&copy; <a href="http://enlogic.com" target="_blank">Enlogic</a></p>
+    </footer> -->
+  </div>
+
+  <div class="hide">
+    <!-- Reset Device dialog -->
+    <div id="resetDeviceDialog">
+      <br>
+      <p>
+        {{=it.resetdevicedl.txt1}}
+      </p>
+      <p>
+        {{=it.resetdevicedl.txt2}} <span id="spSecondsAtResetDev"></span> {{=it.resetdevicedl.txt3}}
+      </p>
+    </div>
+
+    <!--Set alarm dialog-->
+    <div>
+      <div id="setalarmdialog">
+        <form class="form">
+          <div class="form-group">
+            <label>
+              <input type="checkbox" class="switch hide" name="cbupcritical" checked="checked" />
+              {{=it.setalarmdl.uppercritical}}
+              <span class="unit"></span>
+            </label>
+            <input type="text" class="form-control" name="upcritical" id="upcritical" />
+          </div>
+
+          <div class="form-group">
+            <label>
+              <input type="checkbox" class="switch hide" name="cbupwarning" checked="checked" />
+              {{=it.setalarmdl.upperwarning}}
+              <span class="unit"></span>
+            </label>
+            <input type="text" class="form-control" name="upwarning" id="upwarning" />
+          </div>
+
+          <div class="form-group">
+            <label>
+              <input type="checkbox" class="switch hide" name="cblowwarning" checked="checked" />
+              {{=it.setalarmdl.lowerwarning}}
+              <span class="unit"></span>
+            </label>
+            <input type="text" class="form-control" name="lowwarning" id="lowwarning" />
+          </div>
+
+          <div class="form-group">
+            <label>
+              <input type="checkbox" class="switch hide" name="cblowcritical" checked="checked" />
+              {{=it.setalarmdl.lowercritical}}
+              <span class="unit"></span>
+            </label>
+            <input type="text" class="form-control" name="lowcritical" id="lowcritical" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div><!-- End of Wrapper -->
+
+<!-- Template -->
+<div class="hide">
+  <div id="login">
+    <form id="frlogin" role="form">
+      <label id="loginmsg" class="error" style="display:none"></label>
+      <div class="form-group">
+        <label for="username">{{=it.username}}</label>
+        <input type="username" class="form-control"
+         id="username" name="username">
+      </div>
+      <div class="form-group">
+        <label for="password">{{=it.password}}</label>
+        <input type="password" class="form-control"
+        id="password" name="password">
+      </div>
+    </form>
+  </div>
+
+  <style id="changepw">
+    <form id="frchangepw" role="form">
+      <div class="form-group">
+        <label id="changepsw_result" class="error hide"></label>
+        <label id="spOldPassword">{{=it.oldpass}}:</label>
+        <input class="form-control" name="txtOldpassword" id="txtOldpassword" type="password" />
+      </div>
+      <div class="form-group">
+        <label id="spPassword">{{=it.newpass}}:</label>
+        <input class="form-control" name="txtPassword" id="txtPassword" type="password" />
+      </div>
+      <div class="form-group">
+        <label id="spConfirmPassword">{{=it.cfmpass}}:</label>
+        <input class="form-control" name="txtConfirmPassword" id="txtConfirmPassword" type="password" />
+      </div>
+    </form>
+    <script>EL.ChangePsw()</script>
+  </style>
+
+  <style id="network">
+    <form id="frresetnetwork" role="form">
+      <div class="form-group">
+        <label id="resetnetwork_result" class="error hide"></label>
+        <div>
+          <label id="spDhcp">{{=it.dhcppro}}:</label>
+          <input type="checkbox" name="cbdhcp" id="cbdhcp" style="margin-left:5px;margin-top:2px;"></input>
+        </div>
+        <br>
+        <label id="spStaticPt">{{=it.staticpro}}:</label>
+        <div id="staticip" style="border:solid 1px #086DE5;padding:15px;border-radius:10px;">
+          <label id="spIp_address">{{=it.ipv4address}}</label>
+          <input class="form-control" name="ip_address" id="ip_address" type="text" />
+          <label id="spNet_mask">{{=it.netmask}}</label>
+          <input class="form-control" name="net_mask" id="net_mask" type="text" />
+          <label id="spGate_way">{{=it.gateway}}</label>
+          <input class="form-control" name="gate_way" id="gate_way" type="text" />
+        </div>
+      </div>
+    </form>
+    <script>EL.ResetNetwork()</script>
+  </style>
+
+  <style id="resetdev">
+    <form id="frresetdev" role="form">
+      <div class="form-group">
+        <label id="spResetdev">{{=it.doresetcard}}</label>
+      </div>
+    </form>
+    <script>EL.ResetDev()</script>
+  </style>
+
+  <style id="devinfo">
+    <div>
+      /*<ul class="nav nav-tabs" id="devinfotabs">*/
+      <ul class="nav nav-tabs enlg-tabs" id="devinfotabs">
+        <li class="active">
+          <a data-toggle="tab" href="#PDUinformation" id="pduinfo">{{=it.pduinfo}}</a>
+        </li>
+        <li>
+          <a data-toggle="tab" href="#circuitBreakers" id="cbinfo">{{=it.circbreak}}</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div id="PDUinformation" class="tab-pane fade active in">
+          <table id="dev_pduinfo_detail" class="table white-table">
+            <tr class="sku1">
+              <td>{{=it.sku}}</td>
+              <td id="sku">ES1501</td>
+            </tr>
+            <tr class="sku2">
+              <td>{{=it.sku}}</td>
+              <td>ES1502</td>
+            </tr>
+            <tr class="sku1">
+              <td>{{=it.rating}}</td>
+              <td>100-240V,16A,1.6-3.8kVA,50/60Hz</td>
+            </tr>
+            <tr class="sku2">
+              <td>{{=it.rating}}</td>
+              <td>100-240V,32A,3.2-7.6kVA,50/60Hz</td>
+            </tr>
+            <tr>
+              <td>{{=it.serialnum}}</td>
+              <td id="serialnum"></td>
+            </tr>
+            <tr>
+              <td>{{=it.functype}}</td>
+              <td>{{=it.functypev}}</td>
+            </tr>
+            <tr>
+              <td>{{=it.ipv4addr}}</td>
+              <td id="pduip" class="dev_info_content"></td>
+            </tr>
+            <tr>
+              <td>{{=it.macaddr}}</td>
+              <td id="devmac" class="dev_info_content"></td>
+            </tr>
+            <tr>
+              <td>{{=it.fwversion}}</td>
+              <td id="firmversion" class="dev_info_content"></td>
+            </tr>
+            <tr>
+              <td>{{=it.webversion}}</td>
+              <td id="webversion">4.42</td>
+            </tr>
+          </table>
+        </div>
+        <div id="circuitBreakers" class="tab-pane fade">
+          <div id="dev_cb_detail" class="devinfo_content">
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>EL.GetDevinfo()</script>
+  </style>
+
+  <style id="datetime">
+    <form id="frdatetime" role="form">
+      <div class="form-group">
+        <label id="spUTC">{{=it.timezone}}:</label>
+        <div id="listUTC">
+          
+        </div>
+      </div>
+      <div class="form-group">
+        <label id="spDatetime">{{=it.date}}:</label>
+        <div id="datetimepicker1">
+          <input type="text" id="datetimeInput" name="datetimeInput" class="form-control" data-format="yyyy-MM-dd hh:mm:ss" />
+        </div>
+      </div>
+    </form>
+    <script>EL.DateTime()</script>
+  </style>
+
+  <style id="telnet">
+    <form id="frtelnet" role="form">
+      <div class="form-group">
+        <label id="telnet_result" class="error hide"></label>
+      </div>
+      <div class="form-group">
+        <label>{{=it.telnetport}}:</label>
+        <input class="form-control" name="telnetport" id="telnetport" type="text"/>
+        <input name="telnetport_h" id="telnetport_h" type="hidden"/>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input name="chkEnableTelnet" id="chkEnableTelnet" type="checkbox"/>
+          {{=it.enabletelnet}}
+        </label>
+      </div>
+    </form>
+    <script>EL.TelnetSet()</script>
+  </style>
+
+  <style id="http">
+    <form id="frhttp" role="form">
+      <div class="form-group">
+        <label id="http_result" class="error hide"></label>
+      </div>
+      <div class="form-group">
+        <label>{{=it.httpport}}</label>
+        <input class="form-control" name="httpport" id="httpport" type="text"/>
+      </div>
+    </form>
+    <script>EL.HttpSet()</script>
+  </style>
+
+  <style id="eventrl">
+    <form id="freventrl" role="form">
+      <div>
+        <label id="spEAEventrule">{{=it.spEnableAll}}:</label>
+        <input type="checkbox" name="cbeaeventrl" id="cbeaeventrl" style="margin-left:5px;margin-top:5px;" />
+        <div class="form-group" id="eventrule">          
+        </div>
+      </div>
+    </form>
+    <script>EL.EventRule()</script>
+  </style>
+
+  <style id="snmp">
+    <form id="formsnmp">
+      <ul class="nav nav-tabs enlg-tabs" id="devinfotabs">
+        <li class="active">
+          <a data-toggle="tab" href="#Generalinformation" id="General">{{=it.general}}</a>
+        </li>
+        <li>
+          <a data-toggle="tab" href="#Trapsinformation" id="Traps">{{=it.traps}}</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <br>
+        <div id="Generalinformation" class="tab-pane fade active in">
+          <div class="form-group">
+            <label id="spSnmp_read_comm">{{=it.readcs}}:</label>
+            <input class="form-control" name="snmp_rcomm" id="snmp_rcomm" type="text" />
+          </div>
+          <div class="form-group">
+            <label id="spSnmp_write_comm">{{=it.writecs}}:</label>
+            <input class="form-control" name="snmp_wcomm" id="snmp_wcomm" type="text" />
+          </div>
+        </div>
+        <div id="Trapsinformation" class="tab-pane fade">
+          <div class="form-group">
+            <label id="spEip_address">{{=it.host}}:</label>
+            <input class="form-control" name="eip_address" id="eip_address" type="text" />
+          </div>
+          <div class="form-group">
+            <label id="spEtrap_port">{{=it.port}}:</label>
+            <input class="form-control" name="etrap_port" id="etrap_port" type="text" />
+          </div>
+          <div class="form-group">
+            <label id="spEcommunity_str">{{=it.community}}:</label>
+            <input class="form-control" name="ecommunity_str" id="ecommunity_str" type="text" />
+          </div>
+        </div>
+      </div>
+    </form>
+    <script>EL.SNMPSet()</script>
+  </style>
+
+  <style id="datalog">
+    <form id="frdatalog" role="form">
+      <div class="form-group">
+        <label id="datalog_result" class="error hide"></label>
+      </div>
+      <div class="form-group">
+        <label>{{=it.loginterval}}</label>
+        <input class="form-control" name="dlinterval" id="dlinterval" type="text"/>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input name="chkEnableDatalog" id="chkEnableDatalog" type="checkbox"/>
+          {{=it.enablelog}}
+        </label>
+      </div>
+    </form>
+    <script>EL.DatalogSet()</script>
+  </style>
+
+  <style id="diagnostic">
+    <form id="frdiagnostic" role="form">
+      <div class="form-group" style="text-align:center;">
+        <a href="private/log.file" target="_blank" class="btn btn-success" style="margin-top:20px;width:192px;"> 
+          {{=it.downloadlog}}  
+        </a>
+      </div>
+      <div class="form-group" style="text-align:center;">
+        <a id="clearlog" class="btn btn-success" style="margin-top:20px;width:192px;"> 
+          {{=it.clearlog}}  
+        </a>
+      </div>
+    </form>
+    <script>EL.DownloadSet()</script>
+  </style>
+
+  <style id="users">
+    <table id="gdUser" class="table"></table>
+    <script>EL.User()</script>
+  </style>
+
+  <style id="sensorinfo">
+    <table id="gdSensor" class="table"></table>
+    <script>EL.SensorSet()</script>
+  </style>
+
+  <style id="blkconf">
+    <form role="form" action="uploadconf.htm" method="post" enctype="multipart/form-data">
+      <div class="form-group" style="text-align:center;">
+        /*<label>{{=it.dlconf}}</label>*/
+        <a href="private/conf.file" class="btn btn-primary" target="_blank" style="margin-top:20px;">
+          {{=it.dlconffile}}
+        </a>
+      </div>
+      /*<div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="px-submit">{{=it.Uploadconf}}</label>
+        <input type="file" name="uploadconf">
+      </div>
+      <button class="btn btn-primary" type="submit">{{=it.upload}}</button>*/
+    </form>
+    <script>EL.UploadFile()</script>
+  </style>
+
+  <style id="pduinfo">
+    <form id="frpduinfo" role="form">
+      <div class="form-group">
+        <label id="pduinfo_result" class="error hide"></label>
+      </div>
+      <div class="form-group">
+        <label>{{=it.pdunm}}</label>
+        <input class="form-control" name="dlpduname" id="dlpduname" type="text"/>
+      <div class="form-group">
+      </div>
+        <label>{{=it.pduloc}}</label>
+        <input class="form-control" name="dlpdulocation" id="dlpdulocation" type="text"/>
+      </div>
+    </form>
+    <script>EL.PduInfoSet()</script>
+  </style>
+
+  /*<style id="updtfw">
+    <form role="form" action="uploadfirm.htm" method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" class="form-control" />
+      </div>
+      <div class="form-group">
+        <input type="file" name="uploadfirm">
+      </div>
+      <button class="btn btn-primary" type="submit">{{=it.upload}}</button>
+    </form>
+    <script></script>
+  </style>*/
+
+</div>
+<script src="js/prod.js"></script>
+</body>
+</html>

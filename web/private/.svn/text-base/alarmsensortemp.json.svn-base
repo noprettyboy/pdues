@@ -1,0 +1,10 @@
+{
+ "cblowcritical":0
+,"lowcritical":10
+,"cblowwarning":1
+,"lowwarning":10
+,"cbupwarning":0
+,"upwarning":20
+,"cbupcritical":0
+,"upcritical":30
+}

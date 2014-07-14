@@ -1,0 +1,6 @@
+{
+"lowcritical":~phasevollowcritical~
+,"lowwarning":~phasevollowwarning~
+,"upwarning":~phasevolupwarning~
+,"upcritical":~phasevolupcritical~
+}

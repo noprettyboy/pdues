@@ -1,0 +1,6 @@
+{
+"lowcritical":~phasecurlowcritical_get~
+,"lowwarning":~phasecurlowwarning_get~
+,"upwarning":~phasecurupwarning_get~
+,"upcritical":~phasecurupcritical_get~
+}

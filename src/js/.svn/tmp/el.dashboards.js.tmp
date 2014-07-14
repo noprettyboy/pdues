@@ -1,0 +1,376 @@
+(function(window, document) {
+
+  var refreshTimer;
+
+  var timerID = 0
+    , slowTimerID = 0
+    ;
+
+  /*
+  DashBoard functionalities
+  */
+  var self = EL.DashBoard = function() {
+
+    var model = MODEL.dashboard;
+
+    var $currentGrid  = $("#currentgrid")
+      , $voltageGrid  = $("#voltagegrid")
+      , $energyGrid   = $("#energygrid")
+      //, $circuitGrid  = $("#circuitGrid")
+      , $alarmsGrid   = $("#alarmsgrid")
+      , $sensorGrid   = $("#sensorgrid")
+      , interval      = 1000
+      //, title = "Loading"
+      , irmcInfo      = { energy_reset: 0 }
+      , title         = model.loading;
+
+    //Need to refresh the dashboard?
+    self.visibleAll = function() {
+      // return $("#mydialog:visible").size() < 1
+      //   &&  $(".dashboard:visible").size() > 0;
+      return true;
+    };
+
+    //Need to refresh the datagrid?
+    self.visible = function() {
+      //There is: 1) no dialog popuped 2) dashboard is visiable, 3) No force change password
+      //return $(".dashboard:visible").size() > 0;
+      return $(".dialog.modal:visible").size() <= 0;
+    };
+
+    var plot
+      , yAxis
+      ;
+
+    self.filterColsByRows = function(cols, rows) {
+      var newCols = []
+        , row     = rows[0];
+
+      if (!row) return cols;
+
+      for (var i = 0, l = cols.length; i < l; i++) {
+        var col = cols[i];
+        typeof  row[col.field] != "undefined" && row[col.field] != -1 && newCols.push(col);
+      }
+
+      return newCols;
+    };
+
+    //add by zzw begin
+    var resetEnergy;
+    self.getResetEnergy = function() {
+      $.getJSON("private/resetenergy.json?action=0", function(data) {
+          var resetegy = parseInt(data.result2);
+          resetEnergy = (resetegy/10).toFixed(1);
+      });
+    };
+    // self.timeStamp2String = function(time) {
+        // var datetime = new Date();
+        // datetime.setTime(time * 1000);
+        // var year = datetime.getFullYear();
+        // var month = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
+        // var date = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
+        // var hour = datetime.getHours()< 10 ? "0" + datetime.getHours() : datetime.getHours();
+        // var minute = datetime.getMinutes()< 10 ? "0" + datetime.getMinutes() : datetime.getMinutes();
+        // var second = datetime.getSeconds()< 10 ? "0" + datetime.getSeconds() : datetime.getSeconds();
+        // return year + "-" + month + "-" + date+" "+hour+":"+minute+":"+second;
+           
+        // var unixTimeValue = new Date(time * 1000);
+        // var beijingTimeValue = unixTimeValue.toLocaleString();
+        // return beijingTimeValue;
+    // };
+
+    //add by zzw end
+
+    //Prevent click too fast
+    self.init = function() {
+      self.start();
+    };
+
+    self.start = function() {
+      //stop timer previous opened
+      self.stop();
+
+      timerID = window.setInterval(function() {
+        self.getEnergyParams();
+      } , 2 * interval);
+
+      slowTimerID = window.setTimeout(function() {
+        self.getSensors();
+        self.getPDUInfo();
+      }, 4 * interval)
+
+      //refresh once
+      self.getResetEnergy();
+      self.getEnergyParams();
+      self.getSensors();
+      self.getPDUInfo();
+    };
+    
+    /*
+    Before refresh stop all the timer
+    */
+    self.stop = function() {
+      window.clearInterval(timerID);
+      window.clearInterval(slowTimerID);
+    };
+
+    var timer = 0;
+
+    var data = []
+      , totalPoints = 150;
+
+    function getChartData(val) {
+
+      data.length > totalPoints && (data = data.slice(1));
+
+      // Do a random walk
+      while (data.length < totalPoints) {
+        data.push(val);
+      }
+
+      typeof val != "undefined" && data.push(val);
+
+      var res = [];
+      for (var i = 0; i < data.length; ++i) {
+        res.push([i * 2, data[i]])
+      }
+
+      return res;
+    }
+
+    var initTimer = function(datetime) {
+      var curtime       = datetime || new Date()
+        , $currenttime  = $("#currenttime")
+        ;
+
+      var formatTime = function(time) {
+        var strTime = (time || curtime).toString()
+          , idxGMT = strTime.indexOf("GMT")
+          ;
+
+        (idxGMT < 0) && (idxGMT = strTime.indexOf("UTC"));
+
+        return strTime.substr(0, idxGMT);
+      };
+
+      var updateCurrentTime = function() {
+        $currenttime.html(formatTime());
+        curtime = new Date(1000 + +curtime);
+      };
+
+      window.setInterval(updateCurrentTime, 1000);
+
+      updateCurrentTime();
+    };
+
+    var tag = {};
+
+    self.getPDUInfo = function() {
+
+      if (!tag.alarmsGrid) {
+        $alarmsGrid.datagrid({
+          columns: [[
+              {title: MODEL.devinfo.sku,  field:"sku"}
+            , {title: model.pduname,      field:"name"}
+            , {title: model.location,     field:"location"}
+            , {title: model.status,       field:"unit", formatter: function() {
+                return $(".alarm-lowercritical, .alarm-uppercritical, .alarm-lowerwarning, .alarm-upperwarning").size() >= 1
+                          ? EL.SetAlarm.getAlarmTxt(STATUSTYPE[3]) : model.ok;
+              }}
+          ]]
+        });
+
+        tag.alarmsGrid = 1;
+      }
+
+      $.getJSON("private/irmc.json", function(json) {
+        initTimer(EL.DateTime.getDate(json.time));
+        irmcInfo = json;
+        $alarmsGrid.datagrid('loadData', {rows : [json]});
+      });
+    };
+
+    self.getEnergyParams = function() {
+      if (!self.visible()) return;
+
+      var formatterStatus = function(val, row) {
+        return "OK";
+      };
+
+      /*
+      Get pdu energy
+      */
+      var setEnergyGrid = function(rows) {
+        var energyVal =  rows[0].activepower || 0;
+
+        if (!tag.energyGrid) {
+          $energyGrid.datagrid({
+            columns: [ self.filterColsByRows([
+                {title: POWERENERGY.apparentpower,    field: "apparentpower"}
+              , {title: POWERENERGY.activepower,      field: "activepower"}
+              , {field:"status", title:"{0}".format(model.status), formatter: function(value, row) {
+                  return EL.SetAlarm.getAlarmStr(
+                    "alarmpower", value, {}, "(mW)", 0x00000010
+                  );
+                }}
+              , {title: POWERENERGY.totalenergymeter, field: "totalenergymeter", formatter: function(value, row) {
+                  return '<span>{0}</span> <a href="javascript:EL.DashBoard.resetEnergy()" class="menu"></a>&nbsp;&nbsp;<b class="tspan">(<span>{2} kWh</span>&nbsp;&nbsp;{3})</b>'.format(
+                      (value/10).toFixed(1)
+                    , MODEL.pdu.reset
+                    , irmcInfo.energy_reset
+                    , EL.DateTime.formatDate(EL.DateTime.getDate(irmcInfo.energy_reset_time))
+                  );
+                }}
+            ], rows)]
+          });
+          tag.energyGrid = 1;
+        }
+        $energyGrid.datagrid('loadData', {rows : rows});
+      };
+
+      /*
+      Get pdu voltage
+      */
+      var setVoltageGrid = function(rows) {
+        //self.getChart([], "#voltagechart");
+        if (!tag.voltageGrid) {
+          $voltageGrid.datagrid({
+            columns: [ self.filterColsByRows([
+                {title: "L1", field: "l1"}
+              , {title: "L2", field: "l2"}
+              , {title: "L3", field: "l3"}
+              , {field:"status", title:"{0}".format(model.status), formatter: function(value, row) {
+                  return EL.SetAlarm.getAlarmStr(
+                    "alarmvoltage", value, {}, "(mV)", 0x00000010
+                  );
+                }}
+            ], rows)]
+          });
+          tag.voltageGrid = 1;
+        }
+
+        $voltageGrid.datagrid('loadData', {rows: rows});
+      };
+
+      /*
+      Get pdu current
+      */
+      var setCurrentGrid = function(rows) {
+        //self.getChart([], "#currentchart");
+        if (!tag.currentGrid) {
+          $currentGrid.datagrid({
+            columns: [ self.filterColsByRows([
+                {title: "L1", field: "l1", formatter: function(value, row){return (value/10).toFixed(1);}}
+              , {title: model.status, field: "l1status", formatter: function(value, row) {
+                  return EL.SetAlarm.getAlarmStr(
+                    "alarml1", value, {}, "(mA)", 0x00000010
+                  );
+                }}
+              , {title: "CB1 current", field: "cb1current", formatter: function(value, row){return (value/10).toFixed(1);}}
+              , {field: "cb1status", title:"{0} 1".format(ALARMTYPE[2]), formatter: function(value, row) {
+                  return EL.SetAlarm.getAlarmStr(
+                    "alarmcb1", value, {idx: 0}, "(mA)", 0x00000010
+                  );
+                }}
+              , {title: "CB2 current", field: "cb2current", formatter: function(value, row){return (value/10).toFixed(1);}}
+              , {field: "cb2status", title:"{0} 2".format(ALARMTYPE[2]), formatter: function(value, row) {
+                  return EL.SetAlarm.getAlarmStr(
+                    "alarmcb2", value, {idx: 1}, "(mA)", 0x00000010
+                  );
+                }}
+            ], rows)]
+          });
+          tag.currentGrid = 1;
+        }
+
+        $currentGrid.datagrid('loadData', {rows: rows});
+      };
+
+      $.ajax({
+        url: "public/energy.json",
+        dataType: "json",
+        success: function(data) {
+          setEnergyGrid([data.energy]);
+          setVoltageGrid([data.voltage]);
+          setCurrentGrid([data.current]);
+          //setCircuitGrid([data.circuit]);
+        }
+      });
+    };
+
+
+    /*
+
+    */
+    self.getSensors = function() {
+      if (!self.visible()) return;
+      var sensorHandler = function(data) {
+
+        $sensorGrid.datagrid({
+          columns:[[
+            {field:"type", title:"{0}".format(model.externalsensor), formatter: function(value) {
+              return SENSORTYPE[value];
+            }},
+            {field:"sensorname", title:"{0}".format(model.sensorname)},
+            // {field:"pduid", title:"{0}".format(model.pduid) },
+            // {field:"pduname", title:"{0}".format(model.pduname) },
+            {field:"aisle", title:"{0}".format(MODEL.sensor.aisle), formatter: function(value, row){
+              if (1==value) {
+                return "Hot";
+              } else {
+                return "Cold";
+              } 
+            } },
+            {field:"value", title:"{0}".format(model.value) }, //, formatter: EL.ExtSensor.Value}
+            {field:"status", title:"{0}".format(model.status), formatter: function(value, row) {
+              //return STATUSTYPE[value];
+              var type = row["type"]
+                , unit;
+
+              (type == 1) && (unit = TEMPUNIT[EL.Privilege.temperature]);
+              (type == 2) && (unit = "H");
+
+              return EL.SetAlarm.getAlarmStr(
+                SENSORALARMURL[type], value, {sensortype: type}, unit, 0x00000010
+              );
+            }}
+          ]]
+        });
+        
+        $sensorGrid.datagrid("loadData", {rows: data});
+
+      };
+
+      $.ajax({
+          url: "public/sensor.json"
+        , dataType: "json"
+        , success: sensorHandler
+      });
+
+    };
+
+    return self;
+  };
+
+
+  self.resetEnergy = function() {
+    $.messager.confirm(MODEL.buttons.message, MODEL.pdu.reallyresetenergy, function() {
+      $.getJSON("private/resetenergy.json?action=1", function(data) {
+        $.messager.alert(MODEL.buttons.info, MODEL.pdu.resetsuccess);
+        self.getResetEnergy();
+      });
+    });
+  };
+
+  /*update timeout*/
+  var idleTimer;
+  $(document.body).mousemove(function() {
+    clearTimeout(idleTimer);
+    idleTimer = setTimeout(function() {
+      location.reload();
+    }, 1000 * 60 * 20);
+  });
+
+
+})(window, document);

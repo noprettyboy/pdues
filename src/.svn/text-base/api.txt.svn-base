@@ -1,0 +1,59 @@
+JSON API
+
+#No parameters
+reset.json
+
+#parameter required
+login.json
+	username
+	password
+
+password.json
+	username
+	oldpassword
+	newpassword
+
+ipaddr.json
+	ipaddr
+
+irmc_set.json
+	irmc_name
+	
+user.json
+	username
+	password
+	
+datetime.json
+	date
+	time
+
+locale_set.json
+	locale
+	
+networkservice.json
+	httpport
+	telnetstat
+	telnetport
+	
+datalog.json
+	interval
+	state
+	
+所有的alarm set的参数形式为：
+uc=xx&uw=xx&lw=xx&lc=xx
+uc: uppercritital
+uw: upperwarning
+lc: lowcritical
+lw: lowwarning
+
+
+但是如果是cb的alarm设值和取值的话需要多加一个idx变量：0代表cb1,1代表cb2
+idx=0/1&uc=xx&uw=xx&lw=xx&lc=xx
+
+resetenergy.json
+	reset
+	
+sensor.json
+	name
+	aisle
+	

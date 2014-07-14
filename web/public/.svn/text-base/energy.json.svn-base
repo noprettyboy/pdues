@@ -1,0 +1,5 @@
+{
+ "energy":  {"status":~pdustatus~, "activepower": ~actpower_result~,"apparentpower": ~apparentpower_result~,"powerfactor":~power_factor~}
+,"voltage": {"status":~phasevolstatus~, "l1":~phasevoltage_result~, "l2":-1, "l3":-1 ,"totalenergymeter": ~totalenergy_result~}
+,"current": {"cb1status":~cb1status~, "cb2status":~cb2status~, "l1":~phasecurrent_result~, "cb1current":~cb1current_result~, "cb2current":~cb2current_result~, "l1status": ~phasecurrent_status~}
+}

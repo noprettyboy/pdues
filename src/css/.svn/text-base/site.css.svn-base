@@ -1,0 +1,342 @@
+/*
+ * Style twaks
+ * --------------------------------------------------
+ */
+body {
+  padding-top: 70px;
+}
+footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+
+.navbar-inverse,
+#sidebar li.active > a,
+.dropdown-menu,
+#dashboard .table thead > tr > th,
+.marked .modal-backdrop{
+  background-color: #044E97;
+  background-image: -moz-linear-gradient(top, #086DE5, #066DB5);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#086DE5), to(#066DB5));
+  background-image: -webkit-linear-gradient(top, #086DE5, #066DB5);
+  background-image: -o-linear-gradient(top, #086DE5, #066DB5);
+  background-image: linear-gradient(to bottom, #086DE5, #066DB5);
+  background-repeat: repeat-x;
+
+}
+
+.marked .modal-backdrop{
+  opacity: 1;
+  filter:alpha(opacity=65);
+}
+
+.navbar-inverse .navbar-brand,
+.navbar-inverse .navbar-nav > li > a,
+.navbar-inverse .navbar-nav .open .dropdown-menu > li > a{
+  color: #FFFFFF;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.navbar-inverse .navbar-nav > .dropdown > a .caret{
+  border-bottom-color: #FFFFFF;
+  border-top-color: #FFFFFF;
+}
+
+.navbar-inverse .dropdown-header {
+  color: #EEEEEE;
+}
+
+.navbar.navbar-fixed-top{
+  border: none;
+  box-shadow: 1px 1px 1px #999999;
+}
+
+.navbar-inverse .navbar-nav > li.current > a,
+.navbar-inverse .navbar-nav > li.current > a:hover {
+  background-color: #FFFFFF;
+  border-radius: 4px 4px 0 0;
+  color: #000000;
+  position: relative;
+  top: 2px;
+}
+.sidebar-nav{
+  border-right: 1px double #EEEEEE;
+  border: solid 1px #066DB5;
+  margin-bottom: 20px;
+}
+
+#sidebar .nav > li > a{
+  color: #000;
+}
+
+#sidebar li.active > a{
+  color: #fff;
+  background-color: #000;
+  font-weight: 700;
+}
+
+label.error {
+  background-color: #FFFF00;
+  border: 1px dashed #CCCCCC;
+  color: #000000;
+  display: block;
+  font-weight: 400;
+  line-height: 24px;
+  margin: 15px 0;
+  padding: 4px;
+  text-indent: 0.4em;
+}
+
+.jumbotron{
+  padding: 6px 12px !important;
+  /*margin-top: 60px;*/
+}
+
+.chart{
+  height: 300px;
+  padding: 0;
+  width: 100%;
+}
+
+#chart_title{
+  text-align: center;
+}
+
+#dashboard .table {
+  /*margin-bottom: 64px;*/
+  border-bottom: 1px solid #DDDDDD;
+  border-left: 1px solid #DDDDDD;
+  border-right: 1px solid #DDDDDD;
+}
+
+#dashboard .table > thead {
+  background-color: #2998D7;
+}
+
+#dashboard .table thead > tr > th {
+  border-right: 1px solid #CCCCCC;
+  color: #FFFFFF;
+  font-weight: 400;
+  height: 24px;
+}
+
+.noclosed button.close{
+  display: none;
+}
+
+#irmc_name {
+  border: 1px dotted #000000;
+  padding: 6px;
+  width: 80%;
+  line-height: 1em;
+}
+
+#irmc_name[disabled="disabled"] {
+  background-color: #EEEEEE;
+  border: medium none;
+}
+
+#btnNameEdit {
+  background-color: #EEEEEE;
+  border: medium none;
+  float: right;
+  text-decoration: underline;
+}
+
+#mydialog .table{
+  margin-bottom: 0;
+}
+
+.table.online tbody > tr > th{
+  border: none;
+}
+
+/*for alarms, make larger space*/
+.alarm-lowercritical
+,.alarm-uppercritical
+,.alarm-off
+,.alarm-alarm
+,.alarm-alarmed
+{
+  color:#f00 !important;
+  font-weight: 700;
+}
+
+.alarm-lowerwarning
+,.alarm-upperwarning
+{
+  color:#FF8000 !important;
+  font-weight: 700;
+}
+
+/*add by zzw*/
+.white-table{
+  margin-top: 10px;
+  border: none;
+}
+
+.white-table thead > tr > th,
+.white-table tbody > tr > th,
+.white-table tbody > tr > td{
+  border: none;
+}
+/*add by zzw*/
+.enlg-tabs > li > a{
+  color: #555555;
+  text-decoration: none;
+}
+.enlg-tabs > li.active > a, .enlg-tabs > li.active > a:hover, .enlg-tabs > li.active > a:focus{
+  -moz-border-bottom-colors:none;
+  -moz-border-left-colors:none;
+  -moz-border-right-colors:none;
+  -moz-border-top-colors:none;
+  background-color: #FFFFFF;
+  border-color:#DDDDDD #DDDDDD rgba(0,0,0,0);
+  border-image: none;
+  border-style: solid;
+  border-width: 1px;
+  color: #428BCA;
+  cursor: default;
+}
+
+.menuleft{
+  float: left;
+}
+
+.menuright{
+  float: right;
+}
+
+.menuleft a, .menuright a {
+  color: #066DB5;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 700;
+  line-height: 46px;
+  margin: 0 20px;
+  text-decoration: none;
+}
+
+.navbar-fixed-bottom .menuleft a,
+.navbar-fixed-bottom .menuright a{
+  cursor: default;
+  color: #fff;
+}
+
+/*#dashboard .table td {
+  width: 20%;
+}*/
+/*
+#dashboard .table td:last-child,
+#dashboard #sensorgrid td,
+#dashboard #currentgrid td{
+  width: auto;
+}
+
+#dashboard #sensorgrid td:first-child,
+#dashboard #sensorgrid td:nth-child(2),
+#dashboard #currentgrid td:first-child{
+  width: 25%;
+}*/
+/*add by zzw begin*/
+#dashboard #currentgrid td:first-child,
+#dashboard #currentgrid2 td:first-child,
+#dashboard #alarmsgrid td:first-child,
+#dashboard #voltagegrid td:first-child,
+#dashboard #energygrid td:first-child,
+#dashboard #sensorgrid th:first-child{
+  width: 15%;
+}
+
+#dashboard #currentgrid td:nth-child(2),
+#dashboard #alarmsgrid td:nth-child(2),
+#dashboard #voltagegrid td:nth-child(2),
+#dashboard #energygrid td:nth-child(2),
+#dashboard #sensorgrid th:nth-child(2){
+  width: 12%;
+}
+
+#dashboard #alarmsgrid td:nth-child(3){
+  width: 28%;
+}
+#dashboard #currentgrid td:nth-child(3),
+#dashboard #voltagegrid td:nth-child(3),
+#dashboard #energygrid td:nth-child(3),
+#dashboard #sensorgrid th:nth-child(3){
+  width: 16%;
+}
+
+#dashboard #currentgrid td:nth-child(4),
+#dashboard #sensorgrid th:nth-child(4){
+  width: 12%;
+}
+
+#dashboard #currentgrid td:nth-child(5){
+  width: 16%;
+}
+
+#mydialog #gdSensor td:first-child{
+  width: 30%;
+}
+#mydialog #gdSensor td:nth-child(2){
+  width: 30%;
+}
+#mydialog #gdSensor td:nth-child(3){
+  width: 20%;
+}
+
+#logospan{
+  height: 50px;
+  background-image:url(../public/logo.png);
+  background-repeat: no-repeat;
+}
+/*add by zzw end*/
+
+/*#dashboard #energygrid td:nth-child(2),
+#dashboard #energygrid td:nth-child(3),
+#dashboard #energygrid td:nth-child(4),
+#dashboard #energygrid td:nth-child(5),
+#dashboard #energygrid td:nth-child(6){
+  width: auto;
+}*/
+
+.navbar-right .dropdown-menu{
+  width: 100%;
+}
+
+.dialog .modal-header .close{
+  display: none;
+}
+
+
+#dashboard td a.menu {
+  margin-left: 26px;
+}
+
+#setalarmdialog{
+  display: none;
+}
+
+.dialog #setalarmdialog{
+  display: block;
+}
+
+
+.btn-success {
+  background-color: #428BCA;
+  border-color: #357EBD;
+  color: #FFFFFF;
+}
+
+.btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active {
+  background-color: #3276B1;
+  border-color: #285E8E;
+  color: #FFFFFF;
+}
+
+.tspan{
+  font-weight: 400;
+  font-size: 80%;
+}

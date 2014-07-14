@@ -1,0 +1,287 @@
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/pdues/!svn/ver/341/src/private
+END
+alarmcb2.json
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/pdues/!svn/ver/148/src/private/alarmcb2.json
+END
+eventrule_set.json
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/pdues/!svn/ver/260/src/private/eventrule_set.json
+END
+sensor_set.json
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/pdues/!svn/ver/301/src/private/sensor_set.json
+END
+alarmpower_set.json
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/pdues/!svn/ver/123/src/private/alarmpower_set.json
+END
+alarmsensortemp_set.json
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/pdues/!svn/ver/119/src/private/alarmsensortemp_set.json
+END
+alarml1.json
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/pdues/!svn/ver/341/src/private/alarml1.json
+END
+setsnmp.json
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/pdues/!svn/ver/175/src/private/setsnmp.json
+END
+sensor1.json
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/pdues/!svn/ver/238/src/private/sensor1.json
+END
+phasealarmcurrent_set.json
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/pdues/!svn/ver/122/src/private/phasealarmcurrent_set.json
+END
+sensor3.json
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/pdues/!svn/ver/238/src/private/sensor3.json
+END
+resetenergy.json
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/pdues/!svn/ver/208/src/private/resetenergy.json
+END
+alarmcb2_set.json
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/pdues/!svn/ver/148/src/private/alarmcb2_set.json
+END
+ipaddr.json
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/pdues/!svn/ver/234/src/private/ipaddr.json
+END
+alarml1_set.json
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/pdues/!svn/ver/341/src/private/alarml1_set.json
+END
+timezone_set.json
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/pdues/!svn/ver/289/src/private/timezone_set.json
+END
+sensor1_set.json
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/pdues/!svn/ver/224/src/private/sensor1_set.json
+END
+sensor3_set.json
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/pdues/!svn/ver/224/src/private/sensor3_set.json
+END
+resetenergy_set.json
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/pdues/!svn/ver/278/src/private/resetenergy_set.json
+END
+download_datalog.file
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/pdues/!svn/ver/115/src/private/download_datalog.file
+END
+datalog.json
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/pdues/!svn/ver/91/src/private/datalog.json
+END
+snmp.json
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/pdues/!svn/ver/255/src/private/snmp.json
+END
+alarmvoltage.json
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/pdues/!svn/ver/122/src/private/alarmvoltage.json
+END
+ipaddr_set.json
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/pdues/!svn/ver/232/src/private/ipaddr_set.json
+END
+alarmcb1.json
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/pdues/!svn/ver/148/src/private/alarmcb1.json
+END
+reset.json
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/pdues/!svn/ver/58/src/private/reset.json
+END
+clearlog.json
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/pdues/!svn/ver/259/src/private/clearlog.json
+END
+snmp_set.json
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/pdues/!svn/ver/250/src/private/snmp_set.json
+END
+alarmvoltage_set.json
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/pdues/!svn/ver/120/src/private/alarmvoltage_set.json
+END
+irmc.json
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/pdues/!svn/ver/341/src/private/irmc.json
+END
+devinfo.json
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/pdues/!svn/ver/226/src/private/devinfo.json
+END
+sensor2.json
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/pdues/!svn/ver/238/src/private/sensor2.json
+END
+datetime.json
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/pdues/!svn/ver/294/src/private/datetime.json
+END
+alarmcb1_set.json
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/pdues/!svn/ver/148/src/private/alarmcb1_set.json
+END
+alarmsensorhum.json
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/pdues/!svn/ver/119/src/private/alarmsensorhum.json
+END
+users.json
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/pdues/!svn/ver/58/src/private/users.json
+END
+password.json
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/pdues/!svn/ver/58/src/private/password.json
+END
+irmc_set.json
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/pdues/!svn/ver/217/src/private/irmc_set.json
+END
+sensor2_set.json
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/pdues/!svn/ver/224/src/private/sensor2_set.json
+END
+datetime_set.json
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/pdues/!svn/ver/289/src/private/datetime_set.json
+END
+eventrule.json
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/pdues/!svn/ver/252/src/private/eventrule.json
+END
+alarmpower.json
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/pdues/!svn/ver/123/src/private/alarmpower.json
+END
+networkservice.json
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/pdues/!svn/ver/187/src/private/networkservice.json
+END
+locale_set.json
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/pdues/!svn/ver/253/src/private/locale_set.json
+END
+alarmsensorhum_set.json
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/pdues/!svn/ver/119/src/private/alarmsensorhum_set.json
+END
+alarmsensortemp.json
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/pdues/!svn/ver/119/src/private/alarmsensortemp.json
+END
+user.json
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/pdues/!svn/ver/76/src/private/user.json
+END
+phasealarmcurrent.json
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/pdues/!svn/ver/122/src/private/phasealarmcurrent.json
+END

@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 30
+/svn/pdues/!svn/ver/2/svr/cert
+END
+certificate.pem
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/pdues/!svn/ver/2/svr/cert/certificate.pem
+END
+privatekey.pem
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/pdues/!svn/ver/2/svr/cert/privatekey.pem
+END

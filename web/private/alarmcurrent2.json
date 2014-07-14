@@ -1,0 +1,6 @@
+{
+"lowcritical":~cb2curlowcritical_get~
+,"lowwarning":~cb2curlowwarning_get~
+,"upwarning":~cb2curupwarning_get~
+,"upcritical":~cb2curupcritical_get~
+}

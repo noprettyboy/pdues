@@ -1,0 +1,4 @@
+{"lowcritical": ~sensor1lowcritical_get~
+,"lowwarning": ~sensor1lowwarning_get~
+,"upwarning": ~sensor1uppwarning_get~
+,"upcritical": ~sensor1uppcritical_get~}

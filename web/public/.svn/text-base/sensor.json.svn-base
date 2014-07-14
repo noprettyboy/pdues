@@ -1,0 +1,18 @@
+[
+    {
+        "type": "1",
+        "sensorname": "~sensorname1_result~",
+        "aisle":~sensoraisle1_result~,
+        "value": ~tempsensor_value~,
+        "status": ~tempsensor_status~,
+        "connection": 0
+    }
+    ,{
+        "type": "2",
+        "sensorname": "~sensorname2_result~",
+        "aisle":~sensoraisle2_result~,
+        "value": ~humsensor_value~,
+        "status": ~humsensor_status~,
+        "connection": 1
+    }
+]

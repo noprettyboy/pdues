@@ -1,0 +1,15 @@
+.bootstrap-datetimepicker-widget{
+	z-index: 1050;
+}
+
+.bootstrap-datetimepicker-widget td.active{
+
+}
+
+.bootstrap-datetimepicker-widget i {
+  background-color: #000000;
+  display: block;
+  height: 1em;
+  margin: 0 auto;
+  width: 4em;
+}

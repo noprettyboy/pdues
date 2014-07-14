@@ -1,0 +1,9 @@
+{
+    "name": "~irmc_name~"
+  , "power": ~irmc_power~
+  , "sku": 	"~irmc_sku~"
+  , "location": "~irmc_location~"
+  , "time": "~datetime_result~"
+  , "energy_reset": "~getresetenergy_result~"
+  , "energy_reset_time": "~resettime_result~"
+}

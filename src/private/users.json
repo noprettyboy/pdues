@@ -1,0 +1,5 @@
+[
+{"username": "admin", "password": "~edit_admin_passwd~"},
+{"username": "user", "password": "~edit_user_passwd~"},
+{"username": "guest", "password": "~edit_guest_passwd~"}
+]

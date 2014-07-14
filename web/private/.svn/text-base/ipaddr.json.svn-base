@@ -1,0 +1,4 @@
+{"dhcp":~dhcp_result~
+,"ipaddr": "~ipaddr_result~"
+,"netmask":"~netmask_result~"
+,"gateway":"~gateway_result~"}
